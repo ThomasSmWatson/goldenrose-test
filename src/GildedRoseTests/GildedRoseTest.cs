@@ -107,6 +107,7 @@ namespace GildedRoseTests
         }
 
         //- __"Sulfuras"__, being a legendary item, never has to be sold or decreases in `Quality`
+        //"Sulfuras"__ is a legendary item and as such its `Quality` is `80` and it never alters.
         [Fact]
         public void GivenSulfurasItem_WhenQualityUpdated_QualityOrSellInStaysTheSame()
         {
@@ -114,14 +115,14 @@ namespace GildedRoseTests
                 new Item()
                 {
                     Name = "Sulfuras, Hand of Ragnaros",
-                    Quality = 10,
+                    Quality = 80,
                     SellIn = 3
                 }
             };
             var sut = new GildedRose(items);
 
             sut.UpdateQuality();
-            Assert.Equal(10, items[0].Quality);
+            Assert.Equal(80, items[0].Quality);
             Assert.Equal(3, items[0].SellIn);
         }
 
@@ -182,5 +183,6 @@ namespace GildedRoseTests
             sut.UpdateQuality();
             Assert.Equal(0, items[0].Quality);
         }
+
     }
 }

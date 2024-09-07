@@ -22,4 +22,10 @@
         <ProjectReference Include="..\GildedRose\GildedRose.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="original_output.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

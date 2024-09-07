@@ -23,8 +23,24 @@ namespace GildedRoseTests
 
             Program.Main(new string[] { "30" });
             var output = fakeoutput.ToString();
-
             return Verifier.Verify(output);
+        }
+
+
+        [Fact]
+        public void GoldenMasterComparison()
+        {
+            string goldenMasterOutputFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "original_output.txt");
+            var goldenMasterOutput = File.ReadAllText(goldenMasterOutputFilePath);
+
+            var fakeoutput = new StringBuilder();
+            Console.SetOut(new StringWriter(fakeoutput));
+            Console.SetIn(new StringReader("a\n"));
+
+            Program.Main(new string[] { "30" });
+            var output = fakeoutput.ToString();
+
+            Assert.Equal(goldenMasterOutput, output);
         }
     }
 }
