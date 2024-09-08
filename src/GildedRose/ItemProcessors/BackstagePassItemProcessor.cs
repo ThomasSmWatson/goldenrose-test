@@ -20,31 +20,39 @@ using System.Threading.Tasks;
 
 namespace GildedRose.ItemProcessors
 {
-    internal class BrieItemProcessor : IItemProcessor
+    internal class BackstagePassItemProcessor : IItemProcessor
     {
-        private const string _matchingStringValue = "Aged Brie";
+        private const string _matchingStringValue = "Backstage passes to a TAFKAL80ETC concert";
 
         public Func<Item, bool> ConditionMatches => new Func<Item, bool>((Item item) => { return item.Name.Equals(_matchingStringValue); });
-
-        public bool MatchesCondition(Item item)
-        {
-            return item.Name.Equals(_matchingStringValue);
-        }
 
         public void ProcessItem(Item item)
         {
             if (item.Quality < 50)
             {
                 item.Quality = item.Quality + 1;
+
+                if (item.SellIn < 11)
+                {
+                    if (item.Quality < 50)
+                    {
+                        item.Quality = item.Quality + 1;
+                    }
+                }
+
+                if (item.SellIn < 6)
+                {
+                    if (item.Quality < 50)
+                    {
+                        item.Quality = item.Quality + 1;
+                    }
+                }
             }
 
             item.SellIn = item.SellIn - 1;
             if (item.SellIn < 0)
             {
-                if (item.Quality < 50)
-                {
-                    item.Quality = item.Quality + 1;
-                }
+                item.Quality = 0;
             }
         }
     }
