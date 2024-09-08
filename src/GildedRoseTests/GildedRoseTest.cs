@@ -175,5 +175,37 @@ namespace GildedRoseTests
             sut.UpdateQuality();
             Assert.Equal(0, items[0].Quality);
         }
+
+        //- __"Conjured"__ items degrade in `Quality` twice as fast as normal items
+        //[Fact]
+        public void GivenConjuredItem_WhenQualityUpdated_QualityDropsTwiceAsFastAsNormal()
+        {
+            var items = new List<Item>() {
+                new Item()
+                {
+                    Name = "Conjured item 123",
+                    Quality = 10,
+                    SellIn = 4
+                },
+                    new Item()
+                {
+                    Name = "NormalItem123",
+                    Quality = 10,
+                    SellIn = 4
+                }
+            };
+
+            var sut = new GildedRoseKata.GildedRose(items);
+
+            sut.UpdateQuality();
+            Assert.Equal(8, items[0].Quality);
+            Assert.Equal(9, items[1].Quality);
+            sut.UpdateQuality();
+            Assert.Equal(6, items[0].Quality);
+            Assert.Equal(8, items[1].Quality);
+            sut.UpdateQuality();
+            Assert.Equal(4, items[0].Quality);
+            Assert.Equal(7, items[1].Quality);
+        }
     }
 }

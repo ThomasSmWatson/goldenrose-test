@@ -13,6 +13,7 @@ namespace GildedRoseKata
             new BrieItemProcessor(),
             new BackstagePassItemProcessor(),
             new SulfurasItemProcessor(),
+            new ConjuredItemProcessor()
         };
         public GildedRose(IList<Item> Items)
         {
