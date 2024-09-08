@@ -22,10 +22,11 @@ namespace GildedRoseKata
         public void UpdateQuality()
         {
             var defaultProcessor = new DefaultItemProcessor();
-            for (var i = 0; i < Items.Count; i++)
+            
+            foreach (var item in Items)
             {
-                var item = Items[i];
-                var processor = processors.Find(P => P.ConditionMatches != null && P.ConditionMatches(item));
+                var processor = processors.Find(processor => processor.ConditionMatches != null && processor.ConditionMatches(item));
+
                 if (processor != null)
                 {
                     processor.ProcessItem(item);
@@ -34,7 +35,6 @@ namespace GildedRoseKata
                 {
                     defaultProcessor.ProcessItem(item);
                 }
-               
             }
         }
     }
