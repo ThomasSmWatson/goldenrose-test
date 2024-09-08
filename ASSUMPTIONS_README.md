@@ -4,7 +4,7 @@ My AI CV:
 
 https://www.tsmwdevelopment.com/business-card/tom
 
-Please feel free to try my Agent which is trained against my Experience and CV to help answer questions
+Please feel free to try my Agent which is trained against my CV to help answer questions.
 
 # Assumptions
 
