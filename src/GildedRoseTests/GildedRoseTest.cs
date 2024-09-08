@@ -1,14 +1,6 @@
 ﻿using GildedRoseKata;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
-using VerifyTests;
 using Xunit;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GildedRoseTests
 {
@@ -27,7 +19,7 @@ namespace GildedRoseTests
                     SellIn = 1
                 }
             };
-            var sut = new GildedRose(items);
+            var sut = new GildedRoseKata.GildedRose(items);
 
             sut.UpdateQuality();
             Assert.Equal(9, items[0].Quality);
@@ -45,7 +37,7 @@ namespace GildedRoseTests
                     SellIn = 1
                 }
             };
-            var sut = new GildedRose(items);
+            var sut = new GildedRoseKata.GildedRose(items);
 
             sut.UpdateQuality();
             Assert.Equal(0, items[0].Quality);
@@ -64,7 +56,7 @@ namespace GildedRoseTests
                     SellIn = 0
                 }
             };
-            var sut = new GildedRose(items);
+            var sut = new GildedRoseKata.GildedRose(items);
 
             sut.UpdateQuality();
             Assert.Equal(8, items[0].Quality);
@@ -82,7 +74,7 @@ namespace GildedRoseTests
                     SellIn = 1
                 }
             };
-            var sut = new GildedRose(items);
+            var sut = new GildedRoseKata.GildedRose(items);
 
             sut.UpdateQuality();
             Assert.Equal(11, items[0].Quality);
@@ -100,7 +92,7 @@ namespace GildedRoseTests
                     SellIn = 1
                 }
             };
-            var sut = new GildedRose(items);
+            var sut = new GildedRoseKata.GildedRose(items);
 
             sut.UpdateQuality();
             Assert.Equal(50, items[0].Quality);
@@ -119,7 +111,7 @@ namespace GildedRoseTests
                     SellIn = 3
                 }
             };
-            var sut = new GildedRose(items);
+            var sut = new GildedRoseKata.GildedRose(items);
 
             sut.UpdateQuality();
             Assert.Equal(80, items[0].Quality);
@@ -139,7 +131,7 @@ namespace GildedRoseTests
                     SellIn = 7
                 }
             };
-            var sut = new GildedRose(items);
+            var sut = new GildedRoseKata.GildedRose(items);
 
             sut.UpdateQuality();
             Assert.Equal(12, items[0].Quality);
@@ -158,7 +150,7 @@ namespace GildedRoseTests
                     SellIn = 5
                 }
             };
-            var sut = new GildedRose(items);
+            var sut = new GildedRoseKata.GildedRose(items);
 
             sut.UpdateQuality();
             Assert.Equal(13, items[0].Quality);
@@ -178,11 +170,10 @@ namespace GildedRoseTests
                     SellIn = 0
                 }
             };
-            var sut = new GildedRose(items);
+            var sut = new GildedRoseKata.GildedRose(items);
 
             sut.UpdateQuality();
             Assert.Equal(0, items[0].Quality);
         }
-
     }
 }
