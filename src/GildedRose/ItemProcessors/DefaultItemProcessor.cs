@@ -7,22 +7,24 @@ using System.Threading.Tasks;
 
 namespace GildedRose.ItemProcessors
 {
-    internal class DefaultItemProcessor : IItemProcessor
+    internal class DefaultItemProcessor : ItemProcessor
     {
-        public Func<Item, bool> ConditionMatches { get => null; }
-
-        public void ProcessItem(Item item)
+        public override void UpdateQuality(Item item)
         {
             if (item.Quality > 0)
             {
                 item.Quality = item.Quality - 1;
             }
+        }
 
+        public override void UpdateSellIn(Item item)
+        {
             item.SellIn = item.SellIn - 1;
-            if (item.SellIn < 0 && item.Quality > 0)
-            {
-                item.Quality = item.Quality - 1;
-            }
+        }
+
+        public override bool ConditionMatches(Item item)
+        {
+            return false; // this doe snot match by default
         }
     }
 }

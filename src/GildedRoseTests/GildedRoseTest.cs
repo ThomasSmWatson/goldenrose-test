@@ -177,7 +177,7 @@ namespace GildedRoseTests
         }
 
         //- __"Conjured"__ items degrade in `Quality` twice as fast as normal items
-        //[Fact]
+        [Fact]
         public void GivenConjuredItem_WhenQualityUpdated_QualityDropsTwiceAsFastAsNormal()
         {
             var items = new List<Item>() {

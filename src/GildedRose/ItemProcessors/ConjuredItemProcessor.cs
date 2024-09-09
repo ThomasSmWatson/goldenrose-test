@@ -7,23 +7,21 @@ using System.Threading.Tasks;
 
 namespace GildedRose.ItemProcessors
 {
-    internal class ConjuredItemProcessor : IItemProcessor
+    internal class ConjuredItemProcessor : DefaultItemProcessor
     {
-        public Func<Item, bool> ConditionMatches => new Func<Item, bool>((Item item) => item.Name.Contains("Conjured"));
 
-        public void ProcessItem(Item item)
+        public override void UpdateQuality(Item item)
         {
             if (item.Quality > 0)
             {
                 item.Quality = item.Quality - 2;
             }
 
-            item.SellIn = item.SellIn - 1;
-            if (item.SellIn < 0 && item.Quality > 0)
-            {
-                item.Quality = item.Quality - 2;
-                if (item.Quality < 0) item.Quality = 0;
-            }
+            if (item.Quality < 0) item.Quality = 0;
+        }
+        public override bool ConditionMatches(Item item)
+        {
+            return item.Name.Contains("Conjured");
         }
     }
 }

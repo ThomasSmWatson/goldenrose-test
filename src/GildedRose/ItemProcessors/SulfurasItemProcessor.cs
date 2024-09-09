@@ -3,14 +3,18 @@ using System;
 
 namespace GildedRose.ItemProcessors
 {
-    internal class SulfurasItemProcessor : IItemProcessor
+    internal class SulfurasItemProcessor : DefaultItemProcessor
     {
         private const string _matchingStringValue = "Sulfuras, Hand of Ragnaros";
-        public Func<Item, bool> ConditionMatches => new Func<Item, bool>((Item item) => { return item.Name.Equals(_matchingStringValue); });
 
-        public void ProcessItem(Item item)
+        public override void ProcessItem(Item item)
         {
             item.Quality = 80;
+        }
+
+        public override bool ConditionMatches(Item item)
+        {
+            return item.Name.Equals(_matchingStringValue);
         }
     }
 }

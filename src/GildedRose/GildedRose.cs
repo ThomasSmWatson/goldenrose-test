@@ -9,7 +9,7 @@ namespace GildedRoseKata
     public class GildedRose
     {
         IList<Item> Items;
-        List<IItemProcessor> processors = new List<IItemProcessor>() { 
+        List<ItemProcessor> processors = new List<ItemProcessor>() { 
             new BrieItemProcessor(),
             new BackstagePassItemProcessor(),
             new SulfurasItemProcessor(),
@@ -26,7 +26,7 @@ namespace GildedRoseKata
             
             foreach (var item in Items)
             {
-                var processor = processors.Find(processor => processor.ConditionMatches != null && processor.ConditionMatches(item));
+                var processor = processors.Find(processor => processor.ConditionMatches(item));
 
                 if (processor != null)
                 {

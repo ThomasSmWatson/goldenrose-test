@@ -20,13 +20,11 @@ using System.Threading.Tasks;
 
 namespace GildedRose.ItemProcessors
 {
-    internal class BackstagePassItemProcessor : IItemProcessor
+    internal class BackstagePassItemProcessor : DefaultItemProcessor
     {
         private const string _matchingStringValue = "Backstage passes to a TAFKAL80ETC concert";
 
-        public Func<Item, bool> ConditionMatches => new Func<Item, bool>((Item item) => { return item.Name.Equals(_matchingStringValue); });
-
-        public void ProcessItem(Item item)
+        public override void UpdateQuality(Item item)
         {
             if (item.Quality < 50)
             {
@@ -49,11 +47,15 @@ namespace GildedRose.ItemProcessors
                 }
             }
 
-            item.SellIn = item.SellIn - 1;
             if (item.SellIn < 0)
             {
                 item.Quality = 0;
             }
+        }
+
+        public override bool ConditionMatches(Item item)
+        {
+            return item.Name.Equals(_matchingStringValue);
         }
     }
 }
